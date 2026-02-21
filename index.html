@@ -18,7 +18,6 @@
   --bg-gradient:linear-gradient(135deg,#0f0f0f,#1a1a1a);
 }
 
-/* LIGHT MODE */
 body.light{
   --bg-gradient:#f5f5f5;
   --card:#ffffff;
@@ -38,16 +37,14 @@ body{
   backdrop-filter: blur(10px);
   border-bottom:1px solid rgba(255,255,255,.1);
 }
-body.light .navbar{
-  background:#fff;
-}
+body.light .navbar{ background:#fff; }
 .navbar-brand{
   font-weight:700;
   letter-spacing:1px;
   color:var(--gold)!important;
 }
 
-/* HERO (NO SE TOCA) */
+/* HERO */
 .hero{
   height:35vh;
   display:flex;
@@ -57,29 +54,12 @@ body.light .navbar{
   background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
   url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085') center/cover;
 }
-.hero h1{
-  font-size:3rem;
-  font-weight:700;
-  color: #f5f5f5;
-}
-.hero span{
-  color:var(--gold);
-}
-.hero p{
-  opacity:.8;
-}
+.hero h1{ font-size:3rem; font-weight:700; color:#f5f5f5; }
+.hero span{ color:var(--gold); }
 
 /* CATEGORIAS */
-.categorias-scroll{
-  overflow-x:auto;
-  scroll-behavior:smooth;
-}
-.categorias{
-  display:flex;
-  gap:.8rem;
-  padding:.5rem .3rem;
-  width:max-content;
-}
+.categorias-scroll{ overflow-x:auto; scroll-behavior:smooth; }
+.categorias{ display:flex; gap:.8rem; padding:.5rem .3rem; width:max-content; }
 .btn-filter{
   background:transparent;
   border:1px solid var(--gold);
@@ -93,19 +73,14 @@ body.light .navbar{
 }
 
 /* SECCIONES */
-.menu-section{
-  display:none;
-  animation: fadeIn .4s ease;
-}
-.menu-section.active{
-  display:flex;
-}
+.menu-section{ display:none; animation: fadeIn .4s ease; }
+.menu-section.active{ display:flex; }
 @keyframes fadeIn{
   from{opacity:0; transform:translateY(10px);}
   to{opacity:1; transform:translateY(0);}
 }
 
-/* CARDS MEJORADAS SIN CAMBIAR ESTILO */
+/* CARDS */
 .card{
   background:var(--card);
   border:1px solid rgba(255,255,255,.08);
@@ -114,34 +89,11 @@ body.light .navbar{
   transition:.3s;
   box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
-body.light .card{
-  border:1px solid rgba(0, 0, 0, 0.05);
-  box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
-.card:hover{
-  transform:translateY(-6px);
-}
-.card img{
-  height:260px;
-  object-fit:cover;
-}
-.card-body{
-  padding:1.4rem;
-}
-.card h5{
-  color: var(--text);
-}
+.card:hover{ transform:translateY(-6px); }
+.card img{ height:260px; object-fit:cover; }
+.card-body{ padding:1.4rem; text-align:center; }
+.card p{ color:var(--gold); font-weight:600; font-size:1.2rem; }
 
-.card .card-body{
-  color: var(--text);
-}
-.card p{
-  color:var(--gold);
-  font-weight:600;
-  font-size:1.2rem;
-}
-
-/* BOTON */
 .btn-coffee{
   background:var(--gold);
   border:none;
@@ -156,7 +108,7 @@ body.light .card{
   transform:scale(1.05);
 }
 
-/* CARRITO */
+/* CARRITO FLOAT */
 .cart-btn{
   position:fixed;
   bottom:25px;
@@ -173,9 +125,7 @@ body.light .card{
   box-shadow:0 10px 25px rgba(0,0,0,.6);
   transition:.3s;
 }
-.cart-btn:hover{
-  transform:scale(1.1);
-}
+.cart-btn:hover{ transform:scale(1.1); }
 .cart-count{
   position:absolute;
   top:8px;
@@ -193,19 +143,49 @@ body.light .card{
   color:var(--text);
   border-radius:20px;
 }
-.list-group-item{
-  background:transparent;
-  color:var(--text);
+
+/* ITEMS CARRITO */
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.cart-item-name{ flex:1; }
+.cart-item-price{
+  font-weight:700;
+  color:var(--gold);
+  margin-right:10px;
+}
+.remove-btn{
+  background:none;
   border:none;
+  color:#ff4d4d;
+  cursor:pointer;
 }
 
-/* FOOTER */
+/* BOTON ENVIAR */
+.btn-enviar{
+  width:100%;
+  background:var(--gold);
+  border:none;
+  padding:12px;
+  border-radius:30px;
+  font-weight:600;
+  margin-top:15px;
+  transition:.3s;
+}
+.btn-enviar:hover{
+  background:#fff;
+  color:#000;
+}
+
 footer{
   background:#000;
   padding:20px;
   text-align:center;
   margin-top:60px;
-  border-top:1px solid rgba(255,255,255,.1);
 }
 </style>
 </head>
@@ -232,76 +212,50 @@ footer{
 <div class="categorias-scroll mb-4">
 <div class="categorias">
 <button class="btn btn-filter active" onclick="mostrarSeccion('cafe',event)">☕ Frappes Especiales</button>
-<button class="btn btn-filter active" onclick="mostrarSeccion('cafe',event)">☕ Frappes Especiales</button>
 <button class="btn btn-filter" onclick="mostrarSeccion('dulce',event)">🍫 Dulces</button>
 <button class="btn btn-filter" onclick="mostrarSeccion('salada',event)">🧀 Saladas</button>
 </div>
 </div>
 
 <!-- CAFES -->
-
 <div id="cafe" class="row g-4 menu-section active">
 
-  <!-- CARD 1 -->
-  <div class="col-6 col-lg-4">
-    <div class="card h-100">
-      <img src="img/cup-of-americano-black-coffee-in-restaurant-mexico-photo.webp">
-      <div class="card-body text-center">
-        <h5>Café Americano</h5>
-        <p>$25</p>
-        <button class="btn btn-coffee" onclick="agregar('Café Americano',25)">+</button>
-      </div>
-    </div>
-  </div>
+<div class="col-6 col-lg-4">
+<div class="card h-100">
+<img src="img/cup-of-americano-black-coffee-in-restaurant-mexico-photo.webp">
+<div class="card-body">
+<h5>Café Americano</h5>
+<p>$25</p>
+<button class="btn btn-coffee" onclick="agregar('Café Americano',25)">+</button>
+</div>
+</div>
+</div>
 
-  <!-- CARD 2 (NUEVA) -->
-  <div class="col-6 col-lg-4">
-    <div class="card h-100">
-      <img src="img/capuccino.webp">
-      <div class="card-body text-center">
-        <h5>Capuccino</h5>
-        <p>$35</p>
-        <button class="btn btn-coffee" onclick="agregar('Capuccino',35)">+</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-lg-4">
-    <div class="card h-100">
-      <img src="img/capuccino.webp">
-      <div class="card-body text-center">
-        <h5>Capuccino</h5>
-        <p>$35</p>
-        <button class="btn btn-coffee" onclick="agregar('Capuccino',35)">+</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-6 col-lg-4">
-    <div class="card h-100">
-      <img src="img/capuccino.webp">
-      <div class="card-body text-center">
-        <h5>Capuccino</h5>
-        <p>$35</p>
-        <button class="btn btn-coffee" onclick="agregar('Capuccino',35)">+</button>
-      </div>
-    </div>
-  </div>
+<div class="col-6 col-lg-4">
+<div class="card h-100">
+<img src="img/capuccino.webp">
+<div class="card-body">
+<h5>Capuccino</h5>
+<p>$35</p>
+<button class="btn btn-coffee" onclick="agregar('Capuccino',35)">+</button>
+</div>
+</div>
+</div>
 
 </div>
 
-
 <!-- DULCES -->
 <div id="dulce" class="row g-4 menu-section">
-    <div class="col-md-4 col-6">
-        <div class="card h-100">
-            <img src="img/crepa_nutela.webp">
-            <div class="card-body text-center">
-                <h5>Crepa Nutella</h5>
-                <p>$65</p>
-                <button class="btn btn-coffee" onclick="agregar('Crepa Nutella',65)">+</button>
-            </div>
-        </div>
-    </div>
-   
+<div class="col-md-4 col-6">
+<div class="card h-100">
+<img src="img/crepa_nutela.webp">
+<div class="card-body">
+<h5>Crepa Nutella</h5>
+<p>$65</p>
+<button class="btn btn-coffee" onclick="agregar('Crepa Nutella',65)">+</button>
+</div>
+</div>
+</div>
 </div>
 
 <!-- SALADAS -->
@@ -309,7 +263,7 @@ footer{
 <div class="col-md-4 col-6">
 <div class="card h-100">
 <img src="img/Crepas_con_Jamon_Serrano_y_Queso_Crema_IMAGENES_01_480x480.webp">
-<div class="card-body text-center">
+<div class="card-body">
 <h5>Crepa Jamón & Queso</h5>
 <p>$75</p>
 <button class="btn btn-coffee" onclick="agregar('Crepa Jamón & Queso',75)">+</button>
@@ -325,6 +279,7 @@ footer{
 <span class="cart-count" id="cartCount">0</span>
 </div>
 
+<!-- MODAL CARRITO -->
 <div class="modal fade" id="cartModal">
 <div class="modal-dialog modal-dialog-centered">
 <div class="modal-content">
@@ -333,8 +288,26 @@ footer{
 <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
 </div>
 <div class="modal-body">
-<ul id="lista" class="list-group mb-3"></ul>
+<div id="lista"></div>
 <p class="fw-bold">Total: $<span id="total">0</span></p>
+<button class="btn-enviar" onclick="mostrarConfirmacion()">Enviar Pedido</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- MODAL CONFIRMACION -->
+<div class="modal fade" id="confirmModal">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header">
+<h5>¿Confirmar pedido?</h5>
+<button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+</div>
+<div class="modal-body text-center">
+<button class="btn btn-coffee m-2" onclick="confirmarPedido()">Confirmar</button>
+<button class="btn btn-secondary m-2" data-bs-dismiss="modal">Editar</button>
+<button class="btn btn-danger m-2" onclick="cancelarPedido()">Cancelar</button>
 </div>
 </div>
 </div>
@@ -345,36 +318,70 @@ footer{
 </footer>
 
 <script>
-let total=0;
-let count=0;
-
-const lista=document.getElementById('lista');
-const totalSpan=document.getElementById('total');
-const cartCount=document.getElementById('cartCount');
+let carrito=[];
 
 function mostrarSeccion(id,e){
-document.querySelectorAll('.menu-section').forEach(sec=>{
-sec.classList.remove('active');
-});
+document.querySelectorAll('.menu-section').forEach(sec=>sec.classList.remove('active'));
 document.getElementById(id).classList.add('active');
-
-document.querySelectorAll('.btn-filter').forEach(btn=>{
-btn.classList.remove('active');
-});
+document.querySelectorAll('.btn-filter').forEach(btn=>btn.classList.remove('active'));
 e.target.classList.add('active');
 }
 
 function agregar(nombre,precio){
-const li=document.createElement('li');
-li.className='list-group-item d-flex justify-content-between';
-li.innerHTML=`${nombre} <strong>$${precio}</strong>`;
-lista.appendChild(li);
+carrito.push({nombre,precio});
+renderCarrito();
+}
 
-total+=precio;
-count++;
+function eliminar(index){
+carrito.splice(index,1);
+renderCarrito();
+}
+
+function renderCarrito(){
+const lista=document.getElementById('lista');
+const totalSpan=document.getElementById('total');
+const cartCount=document.getElementById('cartCount');
+
+lista.innerHTML="";
+let total=0;
+
+carrito.forEach((item,index)=>{
+total+=item.precio;
+lista.innerHTML+=`
+<div class="cart-item">
+<div class="cart-item-name">${item.nombre}</div>
+<div class="cart-item-price">$${item.precio}</div>
+<button class="remove-btn" onclick="eliminar(${index})">✖</button>
+</div>`;
+});
 
 totalSpan.textContent=total;
-cartCount.textContent=count;
+cartCount.textContent=carrito.length;
+}
+
+function mostrarConfirmacion(){
+if(carrito.length===0){
+alert("El carrito está vacío");
+return;
+}
+new bootstrap.Modal(document.getElementById('confirmModal')).show();
+}
+
+function confirmarPedido(){
+alert("Pedido enviado correctamente ✅");
+carrito=[];
+renderCarrito();
+bootstrap.Modal.getInstance(document.getElementById('confirmModal')).hide();
+bootstrap.Modal.getInstance(document.getElementById('cartModal')).hide();
+}
+
+function cancelarPedido(){
+if(confirm("¿Seguro que deseas cancelar el pedido?")){
+carrito=[];
+renderCarrito();
+bootstrap.Modal.getInstance(document.getElementById('confirmModal')).hide();
+bootstrap.Modal.getInstance(document.getElementById('cartModal')).hide();
+}
 }
 
 function toggleMode(){
