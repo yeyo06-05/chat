@@ -187,6 +187,50 @@ footer{
   text-align:center;
   margin-top:60px;
 }
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+
+
+
+.cart-total-row{
+  display:flex;
+  align-items:center;
+  padding-top:6px;
+  margin-top:6px;
+}
+
+
+.cart-total-name{
+  flex:1;
+  font-weight:600;
+}
+
+
+
+.cart-total-spacer{
+  width:35px;
+}
+
+.cart-item-price{
+  font-weight:700;
+  color:var(--gold);
+  width:75px;
+  text-align:right;
+}
+
+.cart-total-price{
+  width:75px;
+  text-align:right;
+  font-weight:700;
+  color:var(--gold);
+}
+
 </style>
 </head>
 
@@ -289,7 +333,15 @@ footer{
 </div>
 <div class="modal-body">
 <div id="lista"></div>
-<p class="fw-bold">Total: $<span id="total">0</span></p>
+<div class="cart-total-row">
+  <div class="cart-total-name">Total:</div>
+  <div class="cart-total-price">$<span id="total">0</span></div>
+  <div class="cart-total-spacer"></div>
+</div>
+
+
+
+
 <button class="btn-enviar" onclick="mostrarConfirmacion()">Enviar Pedido</button>
 </div>
 </div>
